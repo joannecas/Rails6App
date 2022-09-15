@@ -1,0 +1,15 @@
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Bird</th>
+  </tr>
+  <% @birds.each do |bird| %>
+    <tr>
+      <td><%= bird.id %></td>
+      <td><%= bird.title %></td>
+      <td><%= link_to 'Show', bird %></td>
+      <td><%= link_to 'Edit', edit_bird_path(bird) %></td>
+      <td><%= link_to 'Destroy', bird, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
