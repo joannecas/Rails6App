@@ -12,6 +12,9 @@ class BirdsController < ApplicationController
   end
 
   def create
+    @bird = Bird.new(params.require(:bird).permit(:title))
+    @bird.save
+    redirect_to bird_path(@bird)
   end
 
 end
