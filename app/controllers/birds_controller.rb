@@ -9,12 +9,17 @@ class BirdsController < ApplicationController
   end
 
   def new 
+    @bird = Bird.new
   end
 
   def create
     @bird = Bird.new(params.require(:bird).permit(:title))
-    @bird.save
-    redirect_to bird_path(@bird)
+    if @bird.save
+      flash[:notice] = "Article was created successfully."
+      redirect_to bird_path(@bird)
+    else
+      render 'new'
+    end
   end
 
 end
