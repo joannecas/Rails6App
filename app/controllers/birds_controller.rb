@@ -1,7 +1,8 @@
 class BirdsController < ApplicationController
+  before_action :set_bird, only: [:show, :edit, :update, :destroy]
 
   def show 
-    @bird = Bird.find(params[:id])
+    set_bird
   end
 
   def index
@@ -13,12 +14,12 @@ class BirdsController < ApplicationController
   end
 
   def edit
-    @bird = Bird.find(params[:id])
+    set_bird
   end
 
   def update
-    @bird = Bird.find(params[:id])
-    if @bird.update(params.require(:bird).permit(:title))
+    set_bird
+    if @bird.update(bird_params)
       flash[:notice] = "Bird reference was updated successfully."
       redirect_to @bird
     else
@@ -27,7 +28,7 @@ class BirdsController < ApplicationController
   end
 
   def create
-    @bird = Bird.new(params.require(:bird).permit(:title))
+    @bird = Bird.new(bird_params)
     if @bird.save
       flash[:notice] = "Bird reference was created."
       redirect_to @bird
@@ -37,9 +38,18 @@ class BirdsController < ApplicationController
   end
 
   def destroy
-    @bird = Bird.find(params[:id])
+    set_bird
     @bird.destroy
     redirect_to birds_path
+  end
+
+  private
+  def set_bird
+    @bird = Bird.find(params[:id])
+  end
+
+  def bird_params
+    params.require(:bird).permit(:title)
   end
 
 end
