@@ -1,2 +1,10 @@
-<h1>Birds</h1>
-<%= @bird.title %>
+<p>
+  <h1>Birds</h1>
+  <%= @bird.title %>
+</p>
+------
+<p>
+  <%= link_to 'Edit', edit_bird_path(@bird) %>
+  <%= link_to 'Delete', @bird, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <%= link_to 'Back to Birds', birds_path %>
+</p>

@@ -1,5 +1,5 @@
 
-
+<%= link_to 'Create new reference', new_bird_path %>
 <table>
   <tr>
     <th>Id</th>
@@ -11,7 +11,7 @@
       <td><%= bird.title %></td>
       <td><%= link_to 'Show', bird %></td>
       <td><%= link_to 'Edit', edit_bird_path(bird) %></td>
-      <td><%= link_to 'Destroy', bird, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= link_to 'Delete', bird, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
   <% end %>
 </table>
