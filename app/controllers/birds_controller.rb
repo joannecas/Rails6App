@@ -20,7 +20,7 @@ class BirdsController < ApplicationController
   def update
     set_bird
     if @bird.update(bird_params)
-      flash[:notice] = "Bird reference was updated successfully."
+      flash[:notice] = "#{@bird.title} reference was updated successfully."
       redirect_to @bird
     else
       render 'edit'
@@ -30,7 +30,7 @@ class BirdsController < ApplicationController
   def create
     @bird = Bird.new(bird_params)
     if @bird.save
-      flash[:notice] = "Bird reference was created."
+      flash[:notice] = "#{@bird.title} reference was created."
       redirect_to @bird
     else
       render 'new'
@@ -40,6 +40,7 @@ class BirdsController < ApplicationController
   def destroy
     set_bird
     @bird.destroy
+    flash[:notice] = "#{@bird.title} reference was removed."
     redirect_to birds_path
   end
 

@@ -1,26 +1,7 @@
 <h1>Edit a bird reference</h1>
 
-<% if @bird.errors.any? %>
-<h2>Errors</h2>
-<ul>
-  <% @bird.errors.full_messages.each do |msg| %>
-    <li>
-      <%= msg %>
-    </li>
-  <% end %>
-  </ul>
-<% end %>
+<%= render 'form' %>
 
-<%= form_with(model: @bird, local: true) do |f| %>
-  <p>
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </p>
-
-  <p>
-    <%= f.submit %>
-
-<% end %>
 <p>
   <%= link_to 'Cancel and return to Birds', birds_path %>
 </p>
