@@ -29,6 +29,7 @@ class BirdsController < ApplicationController
 
   def create
     @bird = Bird.new(bird_params)
+    @bird.user = User.first
     if @bird.save
       flash[:notice] = "#{@bird.title} reference was created."
       redirect_to @bird
