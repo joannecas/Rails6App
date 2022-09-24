@@ -6,11 +6,13 @@
   <tr>
     <th>Id</th>
     <th>Bird</th>
+    <th>Reported by</th>
   </tr>
   <% @birds.each do |bird| %>
     <tr>
       <td><%= bird.id %></td>
       <td><%= bird.title %></td>
+      <td><%= bird.user.username if article.user%></td>
       <td><%= link_to 'Show', bird %></td>
       <td><%= link_to 'Edit', edit_bird_path(bird) %></td>
       <td><%= link_to 'Delete', bird, method: :delete, data: { confirm: 'Are you sure?' } %></td>
